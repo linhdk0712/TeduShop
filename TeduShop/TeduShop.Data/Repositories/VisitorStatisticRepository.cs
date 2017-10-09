@@ -3,11 +3,8 @@ using TeduShop.Model.Models;
 
 namespace TeduShop.Data.Repositories
 {
-    public interface IVisitorStatisticRepository : IRepository<VisitorStatistic>
-    {
-    }
 
-    public class VisitorStatisticRepository : RepositoryBase<VisitorStatistic>, IVisitorStatisticRepository
+    public class VisitorStatisticRepository : RepositoryBase<VisitorStatistic>, TeduShop.Data.Repositories.Interfaces.IVisitorStatisticRepository
     {
         public VisitorStatisticRepository(IDbFactory dbFactory) : base(dbFactory)
         {

@@ -3,11 +3,8 @@ using TeduShop.Model.Models;
 
 namespace TeduShop.Data.Repositories
 {
-    public interface ISlideRepository : IRepository<Slide>
-    {
-    }
 
-    public class SlideRepository : RepositoryBase<Slide>, ISlideRepository
+    public class SlideRepository : RepositoryBase<Slide>, TeduShop.Data.Repositories.Interfaces.ISlideRepository
     {
         public SlideRepository(IDbFactory dbFactory) : base(dbFactory)
         {
