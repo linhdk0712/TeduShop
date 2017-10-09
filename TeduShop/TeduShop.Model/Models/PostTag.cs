@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using TeduShop.Model.Abstract;
 
 namespace TeduShop.Model.Models
 {
     [Table("PostTags")]
-    public class PostTag
+    public class PostTag : Auditable
     {
         [Key]
         [Column(Order = 1)]

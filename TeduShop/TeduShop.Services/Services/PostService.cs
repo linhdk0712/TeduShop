@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TeduShop.Data.Infrastructure;
 using TeduShop.Data.Repositories.Interfaces;
 using TeduShop.Model.Models;
@@ -32,6 +33,11 @@ namespace TeduShop.Services.Services
             return _postRepository.GetAll(new string[] { "PostCategory" });
         }
 
+        public IEnumerable<Post> GetAllByCategoryPaging(int categoryId, int page, int pageSize, out int totalRow)
+        {
+            return _postRepository.GetMultiPaging(x => x.Status && x.CategoryID == categoryId, out totalRow, page, pageSize, new string[] { "PostCategory" });
+        }
+
         public IEnumerable<Post> GetAllPaging(int page, int pageSize, out int totalRows)
         {
             return _postRepository.GetMultiPaging(x => x.Status, out totalRows, page, pageSize);
@@ -52,9 +58,15 @@ namespace TeduShop.Services.Services
             _postRepository.Update(post);
         }
 
-        IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRows)
+        IEnumerable<Post> IPostService.GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow)
         {
-            return _postRepository.GetAllByTag(tag,page,pageSize,out totalRows);
+            //TODO: Select all post by tag
+            return _postRepository.GetAllByTag(tag, page, pageSize, out totalRow);
+        }
+
+        IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -32,7 +32,7 @@ namespace TeduShop.Services.Services{
 
         public IEnumerable<Menu> GetAllPaging(int page, int pageSize, out int totalRows)
         {
-            throw new NotImplementedException();
+            return baseService.GetMultiPaging(x => x.Status, out totalRows, page, pageSize);
         }
 
         public Menu GetById(int id)

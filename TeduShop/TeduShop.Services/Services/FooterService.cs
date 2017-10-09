@@ -36,7 +36,7 @@ namespace TeduShop.Services.Services
 
         public IEnumerable<Footer> GetAllPaging(int page, int pageSize, out int totalRows)
         {
-            throw new NotImplementedException();
+            return _footerRepository.GetMultiPaging(x => x.Status, out totalRows, page, pageSize);
         }
 
         public Footer GetById(int id)

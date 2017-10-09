@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using TeduShop.Model.Abstract;
 
 namespace TeduShop.Model.Models
 {
     [Table("SystemConfigs")]
-    public class SystemConfig
+    public class SystemConfig : Auditable
     {
         [Key]
         public int ID { set; get; }

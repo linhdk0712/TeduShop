@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using TeduShop.Model.Abstract;
 
 namespace TeduShop.Model.Models
 {
     [Table("Slides")]
-    public class Slide
+    public class Slide : Auditable
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -25,6 +26,5 @@ namespace TeduShop.Model.Models
 
         public int? DisplayOrder { set; get; }
 
-        public bool Status { set; get; }
     }
 }

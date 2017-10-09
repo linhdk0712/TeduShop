@@ -10,13 +10,13 @@ using TeduShop.Services.Interfaces;
 
 namespace TeduShop.Services.Services
 {
-    public class MenuGroupService : BaseServiceClass<IMenuGroupRepository>, IMenuGroupService
+    public class PostCategoryService : BaseServiceClass<IPostCategoryRepository>,IPostCategoryService
     {
-        public MenuGroupService(IMenuGroupRepository t, IUnitOfWork unitOfWork) : base(t, unitOfWork)
+        public PostCategoryService(PostCategory t, IUnitOfWork unitOfWork) : base(t, unitOfWork)
         {
         }
 
-        public void Add(MenuGroup post)
+        public void Add(PostCategory post)
         {
             baseService.Add(post);
         }
@@ -26,29 +26,29 @@ namespace TeduShop.Services.Services
             baseService.Delete(id);
         }
 
-        public IEnumerable<MenuGroup> GetAll()
+        public IEnumerable<PostCategory> GetAll()
         {
-            return baseService.GetAll();
+           return baseService.GetAll();
         }
 
-        public IEnumerable<MenuGroup> GetAllPaging(int page, int pageSize, out int totalRows)
+        public IEnumerable<PostCategory> GetAllPaging(int page, int pageSize, out int totalRows)
         {
             return baseService.GetMultiPaging(x => x.Status, out totalRows, page, pageSize);
         }
 
-        public MenuGroup GetById(int id)
+        public PostCategory GetById(int id)
         {
-            return baseService.GetSingleById(id);
+            throw new NotImplementedException();
         }
 
         public void SaveChanges()
         {
-            _unitOfWork.Commit();
+            throw new NotImplementedException();
         }
 
-        public void Update(MenuGroup post)
+        public void Update(PostCategory post)
         {
-            baseService.Update(post);
+            throw new NotImplementedException();
         }
     }
 }

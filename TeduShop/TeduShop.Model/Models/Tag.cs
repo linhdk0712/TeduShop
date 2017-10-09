@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using TeduShop.Model.Abstract;
 
 namespace TeduShop.Model.Models
 {
     [Table("Tags")]
-    public class Tag
+    public class Tag : Auditable
     {
         [Key]
         [MaxLength(50)]

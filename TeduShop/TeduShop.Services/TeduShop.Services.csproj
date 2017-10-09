@@ -42,6 +42,19 @@
   <ItemGroup>
     <Compile Include="Interfaces\IMenuServices.cs" />
     <Compile Include="Interfaces\IMenuGroupService.cs" />
+    <Compile Include="Interfaces\IOrderDetailService.cs" />
+    <Compile Include="Interfaces\IOrderService.cs" />
+    <Compile Include="Interfaces\IPageService.cs" />
+    <Compile Include="Interfaces\IPostCategoryService.cs" />
+    <Compile Include="Interfaces\IPostTagService.cs" />
+    <Compile Include="Interfaces\IProductCategoryService.cs" />
+    <Compile Include="Interfaces\IProductService.cs" />
+    <Compile Include="Interfaces\IProductTagService.cs" />
+    <Compile Include="Interfaces\ISlideService.cs" />
+    <Compile Include="Interfaces\ISupportOnlineService.cs" />
+    <Compile Include="Interfaces\ISystemConfigService.cs" />
+    <Compile Include="Interfaces\ITagService.cs" />
+    <Compile Include="Interfaces\IVisitorStatisticService.cs" />
     <Compile Include="Services\MenuGroupService.cs" />
     <Compile Include="Services\MenuServices.cs" />
     <Compile Include="Services\BaseServiceClass.cs" />
@@ -49,6 +62,7 @@
     <Compile Include="Interfaces\IFooterService.cs" />
     <Compile Include="Interfaces\BaseService.cs" />
     <Compile Include="Interfaces\IPostService.cs" />
+    <Compile Include="Services\PostCategoryService.cs" />
     <Compile Include="Services\PostService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
