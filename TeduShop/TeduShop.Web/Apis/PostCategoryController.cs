@@ -1,49 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using TeduShop.Web.Infrastructure.Core;
-using TeduShop.Services.Interfaces;
 using TeduShop.Model.Models;
+using TeduShop.Services.Interfaces;
+using TeduShop.Web.Infrastructure.Core;
 
 namespace TeduShop.Web.Apis
 {
     [RoutePrefix("api/postcategory")]
     public class PostCategoryController : ApiBaseController
     {
-        IPostCategoryService _postCategorySevice;
+        private IPostCategoryService _postCategorySevice;
+
         public PostCategoryController(IErrorService errorService, IPostCategoryService postCategorySevice)
             : base(errorService)
         {
             this._postCategorySevice = postCategorySevice;
         }
+
         [Route("getalldata")]
         public HttpResponseMessage Get(HttpRequestMessage request)
         {
             return CreateHttpResponse(request, () =>
              {
-                 HttpResponseMessage response = null;
-                 if (ModelState.IsValid)
-                 {
-                     request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-                 }
-                 else
-                 {
-                     var result =_postCategorySevice.GetAll();                     
-                     response = request.CreateResponse(HttpStatusCode.OK,result);
-                 }
+                 var result = _postCategorySevice.GetAll();
+                 var response = request.CreateResponse(HttpStatusCode.OK, result);
+
                  return response;
              });
         }
+
         [Route("addnew")]
-        public HttpResponseMessage Post(HttpRequestMessage request,PostCategory postCategory)
+        public HttpResponseMessage Post(HttpRequestMessage request, PostCategory postCategory)
         {
             return CreateHttpResponse(request, () =>
              {
                  HttpResponseMessage response = null;
-                 if(ModelState.IsValid)
+                 if (ModelState.IsValid)
                  {
                      request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
                  }
@@ -56,6 +49,7 @@ namespace TeduShop.Web.Apis
                  return response;
              });
         }
+
         [Route("update")]
         public HttpResponseMessage Put(HttpRequestMessage request, PostCategory postCategory)
         {
@@ -75,6 +69,7 @@ namespace TeduShop.Web.Apis
                  return response;
              });
         }
+
         [Route("remove")]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)
         {
@@ -94,6 +89,5 @@ namespace TeduShop.Web.Apis
                  return response;
              });
         }
-
     }
 }
