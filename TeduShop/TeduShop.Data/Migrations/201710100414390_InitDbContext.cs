@@ -8,11 +8,35 @@ namespace TeduShop.Data.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.Errors",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        Message = c.String(),
+                        StackTrace = c.String(),
+                        CreateDate = c.DateTime(),
+                        CreateBy = c.String(maxLength: 256),
+                        UpdateDate = c.DateTime(),
+                        UpdateBy = c.String(maxLength: 256),
+                        Status = c.Boolean(nullable: false),
+                        MetaKeyword = c.String(maxLength: 256),
+                        MetaDescription = c.String(maxLength: 256),
+                    })
+                .PrimaryKey(t => t.ID);
+            
+            CreateTable(
                 "dbo.Footers",
                 c => new
                     {
                         ID = c.String(nullable: false, maxLength: 50),
                         Content = c.String(nullable: false),
+                        CreateDate = c.DateTime(),
+                        CreateBy = c.String(maxLength: 256),
+                        UpdateDate = c.DateTime(),
+                        UpdateBy = c.String(maxLength: 256),
+                        Status = c.Boolean(nullable: false),
+                        MetaKeyword = c.String(maxLength: 256),
+                        MetaDescription = c.String(maxLength: 256),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -22,6 +46,13 @@ namespace TeduShop.Data.Migrations
                     {
                         ID = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false, maxLength: 50),
+                        CreateDate = c.DateTime(),
+                        CreateBy = c.String(maxLength: 256),
+                        UpdateDate = c.DateTime(),
+                        UpdateBy = c.String(maxLength: 256),
+                        Status = c.Boolean(nullable: false),
+                        MetaKeyword = c.String(maxLength: 256),
+                        MetaDescription = c.String(maxLength: 256),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -35,7 +66,13 @@ namespace TeduShop.Data.Migrations
                         DisplayOrder = c.Int(),
                         GroupID = c.Int(nullable: false),
                         Target = c.String(maxLength: 10),
+                        CreateDate = c.DateTime(),
+                        CreateBy = c.String(maxLength: 256),
+                        UpdateDate = c.DateTime(),
+                        UpdateBy = c.String(maxLength: 256),
                         Status = c.Boolean(nullable: false),
+                        MetaKeyword = c.String(maxLength: 256),
+                        MetaDescription = c.String(maxLength: 256),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.MenuGroups", t => t.GroupID, cascadeDelete: true)
@@ -48,6 +85,13 @@ namespace TeduShop.Data.Migrations
                         OrderID = c.Int(nullable: false),
                         ProductID = c.Int(nullable: false),
                         Quantitty = c.Int(nullable: false),
+                        CreateDate = c.DateTime(),
+                        CreateBy = c.String(maxLength: 256),
+                        UpdateDate = c.DateTime(),
+                        UpdateBy = c.String(maxLength: 256),
+                        Status = c.Boolean(nullable: false),
+                        MetaKeyword = c.String(maxLength: 256),
+                        MetaDescription = c.String(maxLength: 256),
                     })
                 .PrimaryKey(t => new { t.OrderID, t.ProductID })
                 .ForeignKey("dbo.Orders", t => t.OrderID, cascadeDelete: true)
@@ -66,10 +110,14 @@ namespace TeduShop.Data.Migrations
                         CustomerMobile = c.String(nullable: false, maxLength: 50),
                         CustomerMessage = c.String(nullable: false, maxLength: 256),
                         PaymentMethod = c.String(maxLength: 256),
-                        CreatedDate = c.DateTime(),
-                        CreatedBy = c.String(),
                         PaymentStatus = c.String(),
+                        CreateDate = c.DateTime(),
+                        CreateBy = c.String(maxLength: 256),
+                        UpdateDate = c.DateTime(),
+                        UpdateBy = c.String(maxLength: 256),
                         Status = c.Boolean(nullable: false),
+                        MetaKeyword = c.String(maxLength: 256),
+                        MetaDescription = c.String(maxLength: 256),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -197,6 +245,13 @@ namespace TeduShop.Data.Migrations
                     {
                         PostID = c.Int(nullable: false),
                         TagID = c.String(nullable: false, maxLength: 50, unicode: false),
+                        CreateDate = c.DateTime(),
+                        CreateBy = c.String(maxLength: 256),
+                        UpdateDate = c.DateTime(),
+                        UpdateBy = c.String(maxLength: 256),
+                        Status = c.Boolean(nullable: false),
+                        MetaKeyword = c.String(maxLength: 256),
+                        MetaDescription = c.String(maxLength: 256),
                     })
                 .PrimaryKey(t => new { t.PostID, t.TagID })
                 .ForeignKey("dbo.Posts", t => t.PostID, cascadeDelete: true)
@@ -211,6 +266,13 @@ namespace TeduShop.Data.Migrations
                         ID = c.String(nullable: false, maxLength: 50, unicode: false),
                         Name = c.String(nullable: false, maxLength: 50),
                         Type = c.String(nullable: false, maxLength: 50),
+                        CreateDate = c.DateTime(),
+                        CreateBy = c.String(maxLength: 256),
+                        UpdateDate = c.DateTime(),
+                        UpdateBy = c.String(maxLength: 256),
+                        Status = c.Boolean(nullable: false),
+                        MetaKeyword = c.String(maxLength: 256),
+                        MetaDescription = c.String(maxLength: 256),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -220,6 +282,13 @@ namespace TeduShop.Data.Migrations
                     {
                         ProductID = c.Int(nullable: false),
                         TagID = c.String(nullable: false, maxLength: 50, unicode: false),
+                        CreateDate = c.DateTime(),
+                        CreateBy = c.String(maxLength: 256),
+                        UpdateDate = c.DateTime(),
+                        UpdateBy = c.String(maxLength: 256),
+                        Status = c.Boolean(nullable: false),
+                        MetaKeyword = c.String(maxLength: 256),
+                        MetaDescription = c.String(maxLength: 256),
                     })
                 .PrimaryKey(t => new { t.ProductID, t.TagID })
                 .ForeignKey("dbo.Products", t => t.ProductID, cascadeDelete: true)
@@ -237,7 +306,13 @@ namespace TeduShop.Data.Migrations
                         Image = c.String(maxLength: 256),
                         Url = c.String(maxLength: 256),
                         DisplayOrder = c.Int(),
+                        CreateDate = c.DateTime(),
+                        CreateBy = c.String(maxLength: 256),
+                        UpdateDate = c.DateTime(),
+                        UpdateBy = c.String(maxLength: 256),
                         Status = c.Boolean(nullable: false),
+                        MetaKeyword = c.String(maxLength: 256),
+                        MetaDescription = c.String(maxLength: 256),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -253,8 +328,14 @@ namespace TeduShop.Data.Migrations
                         Email = c.String(maxLength: 50),
                         Yahoo = c.String(maxLength: 50),
                         Facebook = c.String(maxLength: 50),
-                        Status = c.Boolean(nullable: false),
                         DisplayOrder = c.Int(),
+                        CreateDate = c.DateTime(),
+                        CreateBy = c.String(maxLength: 256),
+                        UpdateDate = c.DateTime(),
+                        UpdateBy = c.String(maxLength: 256),
+                        Status = c.Boolean(nullable: false),
+                        MetaKeyword = c.String(maxLength: 256),
+                        MetaDescription = c.String(maxLength: 256),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -266,6 +347,13 @@ namespace TeduShop.Data.Migrations
                         Code = c.String(nullable: false, maxLength: 50, unicode: false),
                         ValueString = c.String(maxLength: 50),
                         ValueInt = c.Int(),
+                        CreateDate = c.DateTime(),
+                        CreateBy = c.String(maxLength: 256),
+                        UpdateDate = c.DateTime(),
+                        UpdateBy = c.String(maxLength: 256),
+                        Status = c.Boolean(nullable: false),
+                        MetaKeyword = c.String(maxLength: 256),
+                        MetaDescription = c.String(maxLength: 256),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -276,6 +364,13 @@ namespace TeduShop.Data.Migrations
                         ID = c.Guid(nullable: false),
                         VisitedDate = c.DateTime(nullable: false),
                         IPAddress = c.String(maxLength: 50),
+                        CreateDate = c.DateTime(),
+                        CreateBy = c.String(maxLength: 256),
+                        UpdateDate = c.DateTime(),
+                        UpdateBy = c.String(maxLength: 256),
+                        Status = c.Boolean(nullable: false),
+                        MetaKeyword = c.String(maxLength: 256),
+                        MetaDescription = c.String(maxLength: 256),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -318,6 +413,7 @@ namespace TeduShop.Data.Migrations
             DropTable("dbo.Menus");
             DropTable("dbo.MenuGroups");
             DropTable("dbo.Footers");
+            DropTable("dbo.Errors");
         }
     }
 }
