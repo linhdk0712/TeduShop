@@ -8,9 +8,9 @@ using TeduShop.Services.Interfaces;
 namespace TeduShop.Services.Services{
     
 
-    internal class MenuServices : BaseServiceClass<IMenuRepository>, IMenuServices
+    internal class MenuService : BaseServiceClass<IMenuRepository>, IMenuService
     {
-        public MenuServices(IMenuRepository t, IUnitOfWork unitOfWork)
+        public MenuService(IMenuRepository t, IUnitOfWork unitOfWork)
             : base(t, unitOfWork)
         {
         }

@@ -8,9 +8,9 @@ using TeduShop.Model.Models;
 
 namespace TeduShop.Data.Repositories
 {
-    class ErrorRepository : RepositoryBase<Error>, Interfaces.IErrorRepository
+    public class ErrorRepository : RepositoryBase<Error>, Interfaces.IErrorRepository
     {
-        protected ErrorRepository(IDbFactory dbFactory)
+        public ErrorRepository(IDbFactory dbFactory)
             : base(dbFactory)
         {
             

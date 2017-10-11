@@ -28,24 +28,25 @@ namespace TeduShop.Web.App_Start
         {
             var builder = new ContainerBuilder();
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
-
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
             builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerRequest();
             builder.RegisterType<TeduShopDbContext>().AsSelf().InstancePerRequest();
-           
+
+
+
             // repository
-            builder.RegisterAssemblyTypes(typeof(PostCategoryRepository).Assembly)
+            builder.RegisterAssemblyTypes(typeof(FooterRepository).Assembly)
                    .Where(t => t.Name.EndsWith("Repository"))
                    .AsImplementedInterfaces().InstancePerRequest();
             // services
-            builder.RegisterAssemblyTypes(typeof(PostCategoryService).Assembly)
+            builder.RegisterAssemblyTypes(typeof(FooterService).Assembly)
                   .Where(t => t.Name.EndsWith("Service"))
                   .AsImplementedInterfaces().InstancePerRequest();
             IContainer container = builder.Build();
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
-            var resolver = new AutofacWebApiDependencyResolver(container);
+            var resolver = new AutofacWebApiDependencyResolver((IContainer)container);
             GlobalConfiguration.Configuration.DependencyResolver = resolver;
 
         }

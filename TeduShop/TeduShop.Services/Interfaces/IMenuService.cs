@@ -5,7 +5,7 @@ using TeduShop.Model.Models;
 
 namespace TeduShop.Services.Interfaces
 {
-    public interface IMenuServices : BaseService<Menu>
+    public interface IMenuService : BaseService<Menu>
     {
 
     }

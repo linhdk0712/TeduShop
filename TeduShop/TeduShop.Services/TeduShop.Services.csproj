@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IErrorService.cs" />
-    <Compile Include="Interfaces\IMenuServices.cs" />
+    <Compile Include="Interfaces\IMenuService.cs" />
     <Compile Include="Interfaces\IMenuGroupService.cs" />
     <Compile Include="Interfaces\IOrderDetailService.cs" />
     <Compile Include="Interfaces\IOrderService.cs" />
@@ -58,7 +58,7 @@
     <Compile Include="Interfaces\IVisitorStatisticService.cs" />
     <Compile Include="Services\ErrorService.cs" />
     <Compile Include="Services\MenuGroupService.cs" />
-    <Compile Include="Services\MenuServices.cs" />
+    <Compile Include="Services\MenuService.cs" />
     <Compile Include="Services\BaseServiceClass.cs" />
     <Compile Include="Services\FooterService.cs" />
     <Compile Include="Interfaces\IFooterService.cs" />
