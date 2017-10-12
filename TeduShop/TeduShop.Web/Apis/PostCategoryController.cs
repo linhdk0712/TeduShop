@@ -1,9 +1,12 @@
-﻿using System.Net;
+﻿using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using TeduShop.Model.Models;
 using TeduShop.Services.Interfaces;
 using TeduShop.Web.Infrastructure.Core;
+using TeduShop.Web.Models;
+using TeduShop.Web.Infrastructure.Extensions;
 
 namespace TeduShop.Web.Apis
 {
@@ -24,14 +27,17 @@ namespace TeduShop.Web.Apis
             return CreateHttpResponse(request, () =>
              {
                  var result = _postCategorySevice.GetAll();
-                 var response = request.CreateResponse(HttpStatusCode.OK, result);
+
+                 var listPostCategoryVm = AutoMapper.Mapper.Map<List<PostCategoryViewModel>>(result);
+
+                 var response = request.CreateResponse(HttpStatusCode.OK, listPostCategoryVm);
 
                  return response;
              });
         }
 
         [Route("addnew")]
-        public HttpResponseMessage Post(HttpRequestMessage request, PostCategory postCategory)
+        public HttpResponseMessage Post(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
         {
             return CreateHttpResponse(request, () =>
              {
@@ -42,7 +48,9 @@ namespace TeduShop.Web.Apis
                  }
                  else
                  {
-                     _postCategorySevice.Add(postCategory);
+                     PostCategory newPostCategory = new PostCategory();
+                     newPostCategory.UpdatePostCategory(postCategoryVm);
+                     _postCategorySevice.Add(newPostCategory);
                      _postCategorySevice.SaveChanges();
                      response = request.CreateResponse(HttpStatusCode.OK);
                  }

@@ -12,17 +12,22 @@ using System.Web.Http;
 using Autofac.Integration.WebApi;
 using TeduShop.Data.Repositories;
 using TeduShop.Services.Services;
+using TeduShop.Model.Models;
+using Microsoft.AspNet.Identity;
+using System.Web;
+using Microsoft.Owin.Security.DataProtection;
 
 [assembly: OwinStartup(typeof(TeduShop.Web.App_Start.Startup))]
 
 namespace TeduShop.Web.App_Start
 {
-    public class Startup
+    public partial class Startup
     {
         public void Configuration(IAppBuilder app)
         {
             // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=316888
             ConfigAutofac(app);
+            ConfigureAuth(app);
         }
         private void ConfigAutofac(IAppBuilder app)
         {
@@ -32,15 +37,20 @@ namespace TeduShop.Web.App_Start
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
             builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerRequest();
             builder.RegisterType<TeduShopDbContext>().AsSelf().InstancePerRequest();
-
+            //Asp.net Identity
+            builder.RegisterType<ApplicationUserStore>().As<IUserStore<ApplicationUser>>().InstancePerRequest();
+            builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
+            builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
+            builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
+            builder.Register(c => app.GetDataProtectionProvider()).InstancePerRequest();
 
 
             // repository
-            builder.RegisterAssemblyTypes(typeof(FooterRepository).Assembly)
+            builder.RegisterAssemblyTypes(typeof(PostCategoryRepository).Assembly)
                    .Where(t => t.Name.EndsWith("Repository"))
                    .AsImplementedInterfaces().InstancePerRequest();
             // services
-            builder.RegisterAssemblyTypes(typeof(FooterService).Assembly)
+            builder.RegisterAssemblyTypes(typeof(PostCategoryService).Assembly)
                   .Where(t => t.Name.EndsWith("Service"))
                   .AsImplementedInterfaces().InstancePerRequest();
             IContainer container = builder.Build();
