@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using TeduShop.Data.Infrastructure;
+﻿using TeduShop.Data.Infrastructure;
 using TeduShop.Data.Repositories.Interfaces;
 using TeduShop.Model.Models;
 

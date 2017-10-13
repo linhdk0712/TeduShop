@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using TeduShop.Data.Infrastructure;
 using TeduShop.Data.Repositories.Interfaces;
 using TeduShop.Model.Models;
@@ -18,37 +14,37 @@ namespace TeduShop.Services.Services
 
         public void Add(MenuGroup post)
         {
-            baseService.Add(post);
+            BaseService.Add(post);
         }
 
         public void Delete(int id)
         {
-            baseService.Delete(id);
+            BaseService.Delete(id);
         }
 
         public IEnumerable<MenuGroup> GetAll()
         {
-            return baseService.GetAll();
+            return BaseService.GetAll();
         }
 
         public IEnumerable<MenuGroup> GetAllPaging(int page, int pageSize, out int totalRows)
         {
-            return baseService.GetMultiPaging(x => x.Status, out totalRows, page, pageSize);
+            return BaseService.GetMultiPaging(x => x.Status, out totalRows, page, pageSize);
         }
 
         public MenuGroup GetById(int id)
         {
-            return baseService.GetSingleById(id);
+            return BaseService.GetSingleById(id);
         }
 
         public void SaveChanges()
         {
-            _unitOfWork.Commit();
+            UnitOfWork.Commit();
         }
 
         public void Update(MenuGroup post)
         {
-            baseService.Update(post);
+            BaseService.Update(post);
         }
     }
 }

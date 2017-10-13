@@ -9,8 +9,8 @@ namespace TeduShop.Services.Services
 {
     public class PostService : IPostService
     {
-        private IPostRepository _postRepository;
-        private IUnitOfWork _unitOfWork;
+        private readonly IPostRepository _postRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
         public PostService(IPostRepository postRepository, IUnitOfWork unitOfWork)
         {

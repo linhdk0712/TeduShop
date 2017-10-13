@@ -62,7 +62,7 @@
     <Compile Include="Services\BaseServiceClass.cs" />
     <Compile Include="Services\FooterService.cs" />
     <Compile Include="Interfaces\IFooterService.cs" />
-    <Compile Include="Interfaces\BaseService.cs" />
+    <Compile Include="Interfaces\IBaseService`1.cs" />
     <Compile Include="Interfaces\IPostService.cs" />
     <Compile Include="Services\PostCategoryService.cs" />
     <Compile Include="Services\PostService.cs" />

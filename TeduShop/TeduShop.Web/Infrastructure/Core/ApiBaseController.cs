@@ -15,7 +15,7 @@ namespace TeduShop.Web.Infrastructure.Core
     public class ApiBaseController : ApiController
     {
 
-        private IErrorService _errorService;
+        private readonly IErrorService _errorService;
         public ApiBaseController( IErrorService errorService)
         {
             _errorService = errorService;
