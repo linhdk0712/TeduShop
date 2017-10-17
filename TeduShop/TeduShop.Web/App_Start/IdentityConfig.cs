@@ -11,9 +11,9 @@ using TeduShop.Model.Models;
 
 namespace TeduShop.Web.App_Start
 {
-    public class ApplicationUserStore : UserStore<ApplicationUser>
+    public abstract class ApplicationUserStore : UserStore<ApplicationUser>
     {
-        public ApplicationUserStore(TeduShopDbContext context)
+        protected ApplicationUserStore(TeduShopDbContext context)
             : base(context)
         {
         }

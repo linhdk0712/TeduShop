@@ -13,12 +13,12 @@ namespace TeduShop.Web.Apis
     [RoutePrefix("api/postcategory")]
     public class PostCategoryController : ApiBaseController
     {
-        private IPostCategoryService _postCategorySevice;
+        private readonly IPostCategoryService _postCategorySevice;
 
         public PostCategoryController(IErrorService errorService, IPostCategoryService postCategorySevice)
             : base(errorService)
         {
-            this._postCategorySevice = postCategorySevice;
+            _postCategorySevice = postCategorySevice;
         }
 
         [Route("getalldata")]
@@ -48,7 +48,7 @@ namespace TeduShop.Web.Apis
                  }
                  else
                  {
-                     PostCategory newPostCategory = new PostCategory();
+                     var newPostCategory = new PostCategory();
                      newPostCategory.UpdatePostCategory(postCategoryVm);
                      _postCategorySevice.Add(newPostCategory);
                      _postCategorySevice.SaveChanges();

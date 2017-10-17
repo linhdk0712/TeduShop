@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.Owin;
+﻿using Microsoft.Owin;
 using Owin;
 using Autofac;
 using Autofac.Integration.Mvc;
@@ -29,7 +27,7 @@ namespace TeduShop.Web.App_Start
             ConfigAutofac(app);
             ConfigureAuth(app);
         }
-        private void ConfigAutofac(IAppBuilder app)
+        private static void ConfigAutofac(IAppBuilder app)
         {
             var builder = new ContainerBuilder();
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
@@ -53,10 +51,10 @@ namespace TeduShop.Web.App_Start
             builder.RegisterAssemblyTypes(typeof(PostCategoryService).Assembly)
                   .Where(t => t.Name.EndsWith("Service"))
                   .AsImplementedInterfaces().InstancePerRequest();
-            IContainer container = builder.Build();
+            var container = builder.Build();
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
-            var resolver = new AutofacWebApiDependencyResolver((IContainer)container);
+            var resolver = new AutofacWebApiDependencyResolver(container);
             GlobalConfiguration.Configuration.DependencyResolver = resolver;
 
         }

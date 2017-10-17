@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using TeduShop.Data.Infrastructure;
 using TeduShop.Data.Repositories.Interfaces;
 using TeduShop.Model.Models;
@@ -12,8 +8,8 @@ namespace TeduShop.Services.Services
 {
     public class FooterService : IFooterService
     {
-        private IFooterRepository _footerRepository;
-        private IUnitOfWork _unitOfWork;
+        private readonly IFooterRepository _footerRepository;
+        private readonly IUnitOfWork _unitOfWork;
         public FooterService(IFooterRepository footerRepository, IUnitOfWork unitOfWork)
         {
             _footerRepository = footerRepository;

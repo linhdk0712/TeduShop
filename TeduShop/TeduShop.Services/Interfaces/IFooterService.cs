@@ -1,12 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using TeduShop.Model.Models;
-using TeduShop.Services.Interfaces;
 
-namespace TeduShop.Services
+namespace TeduShop.Services.Interfaces
 {
-    public interface IFooterService : BaseService<Footer>
+    public interface IFooterService : IBaseService<Footer>
     {
 
     }

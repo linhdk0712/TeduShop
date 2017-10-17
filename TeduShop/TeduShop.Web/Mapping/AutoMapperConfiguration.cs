@@ -4,7 +4,7 @@ using TeduShop.Web.Models;
 
 namespace TeduShop.Web.Mapping
 {
-    public class AutoMapperConfiguration
+    public static class AutoMapperConfiguration
     {
         public static void Configure()
         {

@@ -13,7 +13,7 @@ namespace TeduShop.Web.Apis
     [RoutePrefix("api/footer")]
     public class FooterController : ApiBaseController
     {
-        private IFooterService _footerServices;
+        private readonly IFooterService _footerServices;
         public FooterController(IErrorService errorService, IFooterService footerServices)
             : base(errorService)
         {

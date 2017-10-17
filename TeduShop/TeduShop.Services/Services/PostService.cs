@@ -9,8 +9,8 @@ namespace TeduShop.Services.Services
 {
     public class PostService : IPostService
     {
-        private IPostRepository _postRepository;
-        private IUnitOfWork _unitOfWork;
+        private readonly IPostRepository _postRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
         public PostService(IPostRepository postRepository, IUnitOfWork unitOfWork)
         {
@@ -30,12 +30,12 @@ namespace TeduShop.Services.Services
 
         public IEnumerable<Post> GetAll()
         {
-            return _postRepository.GetAll(new string[] { "PostCategory" });
+            return _postRepository.GetAll(new[] { "PostCategory" });
         }
 
         public IEnumerable<Post> GetAllByCategoryPaging(int categoryId, int page, int pageSize, out int totalRow)
         {
-            return _postRepository.GetMultiPaging(x => x.Status && x.CategoryID == categoryId, out totalRow, page, pageSize, new string[] { "PostCategory" });
+            return _postRepository.GetMultiPaging(x => x.Status && x.CategoryID == categoryId, out totalRow, page, pageSize, new[] { "PostCategory" });
         }
 
         public IEnumerable<Post> GetAllPaging(int page, int pageSize, out int totalRows)
