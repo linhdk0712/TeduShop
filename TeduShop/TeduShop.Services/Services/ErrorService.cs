@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TeduShop.Data.Repositories.Interfaces;
 using TeduShop.Services.Interfaces;
 using TeduShop.Data.Infrastructure;
+using TeduShop.Data.Infrastructure.Interfaces;
 using TeduShop.Model.Models;
 
 namespace TeduShop.Services.Services

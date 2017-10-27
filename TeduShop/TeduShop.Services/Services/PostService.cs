@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TeduShop.Data.Infrastructure;
+using TeduShop.Data.Infrastructure.Interfaces;
 using TeduShop.Data.Repositories.Interfaces;
 using TeduShop.Model.Models;
 using TeduShop.Services.Interfaces;

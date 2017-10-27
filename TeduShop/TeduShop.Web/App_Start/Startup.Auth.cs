@@ -1,15 +1,17 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using System;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
-using System;
 using TeduShop.Data;
 using TeduShop.Model.Models;
+using TeduShop.Web;
+using TeduShop.Web.App_Start;
 
-[assembly: OwinStartup(typeof(TeduShop.Web.App_Start.Startup))]
+[assembly: OwinStartup(typeof(Startup))]
 
-namespace TeduShop.Web.App_Start
+namespace TeduShop.Web
 {
     public partial class Startup
     {

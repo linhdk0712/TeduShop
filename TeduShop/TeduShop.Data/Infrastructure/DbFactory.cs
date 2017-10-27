@@ -1,6 +1,8 @@
-﻿namespace TeduShop.Data.Infrastructure
+﻿using TeduShop.Data.Infrastructure.Interfaces;
+
+namespace TeduShop.Data.Infrastructure
 {
-    public class DbFactory : Disposable, IDbFactory
+    public abstract class DbFactory : Disposable, IDbFactory
     {
         private TeduShopDbContext _dbContext;
 

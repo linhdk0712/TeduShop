@@ -1,4 +1,5 @@
 ﻿using TeduShop.Data.Infrastructure;
+using TeduShop.Data.Infrastructure.Interfaces;
 
 namespace TeduShop.Services.Services
 {

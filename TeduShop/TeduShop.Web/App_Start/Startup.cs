@@ -1,23 +1,26 @@
-﻿using Microsoft.Owin;
-using Owin;
+﻿using System.Reflection;
+using System.Web;
+using System.Web.Http;
+using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
-using System.Reflection;
-using TeduShop.Data.Infrastructure;
-using TeduShop.Data;
-using System.Web.Mvc;
-using System.Web.Http;
 using Autofac.Integration.WebApi;
-using TeduShop.Data.Repositories;
-using TeduShop.Services.Services;
-using TeduShop.Model.Models;
 using Microsoft.AspNet.Identity;
-using System.Web;
+using Microsoft.Owin;
 using Microsoft.Owin.Security.DataProtection;
+using Owin;
+using TeduShop.Data;
+using TeduShop.Data.Infrastructure;
+using TeduShop.Data.Infrastructure.Interfaces;
+using TeduShop.Data.Repositories;
+using TeduShop.Model.Models;
+using TeduShop.Services.Services;
+using TeduShop.Web.App_Start;
+using Startup = TeduShop.Web.Startup;
 
-[assembly: OwinStartup(typeof(TeduShop.Web.App_Start.Startup))]
+[assembly: OwinStartup(typeof(Startup))]
 
-namespace TeduShop.Web.App_Start
+namespace TeduShop.Web
 {
     public partial class Startup
     {
